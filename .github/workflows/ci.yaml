@@ -24,6 +24,30 @@ jobs:
           go-version: 1.13.4
       - run: |
           go build -race  ./...
+
+  build-osx:
+    name: build-osx
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v1
+        with:
+          go-version: 1.13.4
+      - run: |
+          go build -race  ./...
+
+  test-osx:
+    name: test-osx
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v1
+        with:
+          go-version: 1.13.4
+      - name: Run tests
+        run: |
+          go test -race -short ./...
+
   test:
     name: test
     runs-on: ubuntu-latest
