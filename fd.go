@@ -215,3 +215,8 @@ func RecvFromConn(conn net.Conn) (*FD, error) {
 	}
 	return nil, errors.Errorf("unable to extract raw FDUintptr to find Inode from %+v due to lack of syscallConn() (syscall.RawConn, error) method", conn)
 }
+
+// FDer - wrapper for things providing ToFD() *FD
+type FDer interface {
+	ToFD() *FD
+}
